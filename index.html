@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOIR — High-End Fashion Editorial</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts: Neue Montreal fallback (Inter/Outfit) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <span class="loader-text">NOIR</span>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-bg" data-speed="0.2">
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2000&auto=format&fit=crop" alt="High Fashion Model" class="parallax-img">
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title split-text">NOIR</h1>
+                <p class="hero-tagline">Autumn / Winter ’26 Campaign</p>
+                <div class="scroll-indicator">
+                    <span class="scroll-text">Scroll to explore</span>
+                    <div class="scroll-line"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Philosophy Section -->
+        <section id="about" class="about">
+            <div class="container container-wide">
+                <div class="about-grid">
+                    <div class="about-text-block" data-speed="0.1">
+                        <h2 class="section-title">Philosophy</h2>
+                        <p class="body-text">We believe in the power of silence. Our collections are built on the foundations of architectural precision and the subtle interplay of light and shadow. Each piece is a testament to the beauty of restraint.</p>
+                    </div>
+                    <div class="about-image-block animate-mask">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop" alt="Fashion Detail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection / Showcase -->
+        <section id="collection" class="collection">
+            <div class="collection-header">
+                <h2 class="huge-title">THE COLLECTION</h2>
+            </div>
+            <div class="collection-grid">
+                <div class="collection-item" data-speed="0.15">
+                    <div class="item-img-wrapper animate-mask">
+                        <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?q=80&w=1000&auto=format&fit=crop" alt="Collection 01">
+                        <div class="item-overlay">
+                            <span class="item-name">SILK SCULPTURE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection-item" data-speed="0.05">
+                    <div class="item-img-wrapper animate-mask">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop" alt="Collection 02">
+                        <div class="item-overlay">
+                            <span class="item-name">CHARCOAL STRUCTURE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection-item" data-speed="0.2">
+                    <div class="item-img-wrapper animate-mask">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop" alt="Collection 03">
+                        <div class="item-overlay">
+                            <span class="item-name">NEUTRAL FLOW</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection-item" data-speed="0.1">
+                    <div class="item-img-wrapper animate-mask">
+                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1000&auto=format&fit=crop" alt="Collection 04">
+                        <div class="item-overlay">
+                            <span class="item-name">MONOCHROME VISION</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Break Section -->
+        <section id="visual-break" class="visual-break">
+            <div class="parallax-container">
+                <img src="https://images.unsplash.com/photo-1470309971470-49669527e57c?q=80&w=2000&auto=format&fit=crop" alt="Immersive Fashion" class="parallax-img" data-speed="-0.3">
+                <div class="parallax-overlay">
+                    <h2 class="break-text">ETHEREAL / ESSENTIAL</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / Collaboration Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="huge-title split-text">LET’S CREATE.</h2>
+                <div class="contact-content">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="YOUR NAME" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="YOUR@EMAIL.COM" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Inquiry</label>
+                            <textarea id="message" rows="1" placeholder="TELL US ABOUT THE VISION"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>SEND INQUIRY</span>
+                            <div class="btn-line"></div>
+                        </button>
+                    </form>
+                    <div class="contact-info">
+                        <p>Studio — Paris / Tokyo</p>
+                        <p>Instagram / Twitter / Behance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-bottom">
+                <span>© 2026 NOIR STUDIOS — ALL RIGHTS RESERVED.</span>
+                <span>BACK TO TOP</span>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
