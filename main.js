@@ -24,29 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 1,
         ease: 'power3.inOut'
     })
-    .to('.loader', {
-        yPercent: -100,
-        duration: 1.2,
-        ease: 'expo.inOut'
-    })
-    .from('.hero-bg img', {
-        scale: 1.2,
-        duration: 2,
-        ease: 'power3.out'
-    }, '-=0.8')
-    .from('.hero-title span', {
-        y: 100,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 1.2,
-        ease: 'power4.out'
-    }, '-=1.2')
-    .from('.hero-tagline, .scroll-indicator', {
-        opacity: 0,
-        y: 20,
-        duration: 1,
-        ease: 'power3.out'
-    }, '-=0.5');
+        .to('.loader', {
+            yPercent: -100,
+            duration: 1.2,
+            ease: 'expo.inOut'
+        })
+        .from('.hero-bg img', {
+            scale: 1.2,
+            duration: 2,
+            ease: 'power3.out'
+        }, '-=0.8')
+        .from('.hero-title span', {
+            y: 100,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 1.2,
+            ease: 'power4.out'
+        }, '-=1.2')
+        .from('.hero-tagline, .scroll-indicator', {
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            ease: 'power3.out'
+        }, '-=0.5');
 
     // 4. Split Text for Headlines (Simple Implementation)
     const splitTextElements = document.querySelectorAll('.split-text');
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const { left, top, width, height } = item.getBoundingClientRect();
             const x = (e.clientX - left) / width - 0.5;
             const y = (e.clientY - top) / height - 0.5;
-            
+
             gsap.to(img, {
                 x: x * 30,
                 y: y * 30,
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ease: 'power2.out'
             });
         });
-        
+
         item.addEventListener('mouseleave', () => {
             gsap.to(img, {
                 x: 0,
