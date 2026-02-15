@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function raf(time) {
         lenis.raf(time);
+
+        // Update Scroll Progress
+        const scrollProgress = document.querySelector('.scroll-progress');
+        if (scrollProgress) {
+            const scrollPercent = (lenis.scroll / (document.body.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
@@ -55,91 +63,95 @@ document.addEventListener('DOMContentLoaded', () => {
         el.innerHTML = text.split('').map(char => `<span>${char === ' ' ? '&nbsp;' : char}</span>`).join('');
     });
 
-    // 5. Parallax Effects
-    const parallaxImages = document.querySelectorAll('[data-speed]');
-    parallaxImages.forEach(el => {
-        const speed = el.getAttribute('data-speed');
-        gsap.to(el, {
-            y: (index, target) => {
-                const height = target.offsetHeight;
-                return height * speed;
-            },
+    // 5. Horizontal Scroll Pinning
+    const horizontalSection = document.querySelector('.collection-pinned');
+    const horizontalContainer = document.querySelector('.collection-grid-horizontal');
+
+    if (horizontalSection && horizontalContainer) {
+        let scrollWidth = horizontalContainer.offsetWidth - window.innerWidth + (window.innerWidth * 0.14); // padding offset
+
+        gsap.to(horizontalContainer, {
+            x: -scrollWidth,
             ease: "none",
             scrollTrigger: {
-                trigger: el,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
+                trigger: horizontalSection,
+                pin: true,
+                scrub: 1,
+                start: "top top",
+                end: () => "+=" + scrollWidth,
+                invalidateOnRefresh: true
             }
+        });
+    }
+
+    // 6. Magnetic Interactions
+    const magneticElements = document.querySelectorAll('.submit-btn, .item-img-wrapper');
+    magneticElements.forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+            const { left, top, width, height } = el.getBoundingClientRect();
+            const x = (e.clientX - left) / width - 0.5;
+            const y = (e.clientY - top) / height - 0.5;
+
+            gsap.to(el, {
+                x: x * 40,
+                y: y * 40,
+                rotate: x * 5,
+                duration: 1,
+                ease: 'power4.out'
+            });
+        });
+
+        el.addEventListener('mouseleave', () => {
+            gsap.to(el, {
+                x: 0,
+                y: 0,
+                rotate: 0,
+                duration: 1,
+                ease: 'elastic.out(1, 0.3)'
+            });
         });
     });
 
-    // 6. Mask Animation for Images
-    const maskElements = document.querySelectorAll('.animate-mask');
-    maskElements.forEach(el => {
-        gsap.to(el, {
-            clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 1.5,
-            ease: 'expo.inOut',
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 85%',
-                once: true
-            }
-        });
-    });
+    // 7. Advanced Letter Reveal
+    const revealElements = document.querySelectorAll('.huge-title, .hero-title');
+    revealElements.forEach(el => {
+        const text = el.innerText;
+        el.innerHTML = text.split('').map(char => `<span class="letter">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
 
-    // 7. Scroll Reveal for Text Blocks
-    gsap.utils.toArray('.about-text-block, .collection-header h2, .contact h2').forEach(text => {
-        gsap.from(text, {
+        gsap.from(el.querySelectorAll('.letter'), {
+            y: 100,
+            rotate: 15,
             opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: 'power3.out',
+            stagger: 0.05,
+            duration: 1.5,
+            ease: 'expo.out',
             scrollTrigger: {
-                trigger: text,
+                trigger: el,
                 start: 'top 90%',
             }
         });
     });
 
-    // 8. Collection Hover Motion (Mouse move subtle interaction)
-    const collectionItems = document.querySelectorAll('.collection-item');
-    collectionItems.forEach(item => {
-        const img = item.querySelector('img');
-        item.addEventListener('mousemove', (e) => {
-            const { left, top, width, height } = item.getBoundingClientRect();
-            const x = (e.clientX - left) / width - 0.5;
-            const y = (e.clientY - top) / height - 0.5;
-
-            gsap.to(img, {
-                x: x * 30,
-                y: y * 30,
-                scale: 1.15,
-                duration: 0.8,
-                ease: 'power2.out'
-            });
-        });
-
-        item.addEventListener('mouseleave', () => {
-            gsap.to(img, {
-                x: 0,
-                y: 0,
-                scale: 1,
-                duration: 0.8,
-                ease: 'power2.out'
-            });
-        });
+    // 8. Visual Break Parallax
+    gsap.to('.visual-break .parallax-img', {
+        yPercent: 30,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: '.visual-break',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+        }
     });
 
     // 9. Form Interactive Stagger
     const formGroups = document.querySelectorAll('.form-group');
     gsap.from(formGroups, {
         opacity: 0,
-        y: 20,
+        y: 30,
         stagger: 0.2,
-        duration: 1,
-        ease: 'power3.out',
+        duration: 1.2,
+        ease: 'power4.out',
         scrollTrigger: {
             trigger: '.contact-form',
             start: 'top 80%',
