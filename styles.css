@@ -461,16 +461,16 @@ img {
     }
 
     .collection-grid-horizontal {
-        gap: 5vh;
-        padding: 0 5vw;
+        gap: 8vw;
+        padding: 0 var(--container-padding);
     }
 
     .collection-item {
-        width: 80vw;
+        width: 65vw;
     }
 
     .collection-item:nth-child(even) {
-        margin-top: 0;
+        margin-top: 8vh;
     }
 
     .hero-title {
