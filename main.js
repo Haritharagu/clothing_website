@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
         smoothWheel: true,
+        touchMultiplier: 2,
+        infinite: false,
     });
 
     function raf(time) {
@@ -13,8 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update Scroll Progress
         const scrollProgress = document.querySelector('.scroll-progress');
         if (scrollProgress) {
-            const scrollPercent = (lenis.scroll / (document.body.scrollHeight - window.innerHeight)) * 100;
-            scrollProgress.style.width = scrollPercent + '%';
+            const contentHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (contentHeight > 0) {
+                const scrollPercent = (lenis.scroll / contentHeight) * 100;
+                scrollProgress.style.width = scrollPercent + '%';
+            }
         }
 
         requestAnimationFrame(raf);
@@ -35,7 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .to('.loader', {
             yPercent: -100,
             duration: 1.2,
-            ease: 'expo.inOut'
+            ease: 'expo.inOut',
+            onComplete: () => {
+                document.querySelector('.loader').style.display = 'none';
+                ScrollTrigger.refresh();
+            }
         })
         .from('.hero-bg img', {
             scale: 1.2,
